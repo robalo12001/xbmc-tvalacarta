@@ -183,7 +183,6 @@ def performsearch(texto):
         scrapedplot  = scrapedplot.replace("&oacute;","ó")
         scrapedplot  = scrapedplot.replace("&uacute;","ú")
         scrapedplot  = scrapedplot.replace("&ntilde;","ñ")
-        
 
         if (DEBUG): logger.info("title=["+scrapedtitle+"], url=["+scrapedurl+"], thumbnail=["+scrapedthumbnail+"]")
 
@@ -570,16 +569,16 @@ def listvideos(params,url,category):
                 encontrados.add(scrapedurl.strip())
                 xbmctools.addnewvideo( CHANNELNAME , "play" , category ,servidor, title+ " - %s" % titulo  , scrapedurl , thumbnail, plot )        
     '''
-    <span class="bloque-uploader">Anónimo</span>
-    <span class="bloque-doblaje"><img src="../images/esp.gif" class="bandera" /></span>
-    <span class="bloque-link">Opción 8: <a href="javascript:goTo('aHR0cDovL3d3dy5tZWdhdmlkZW8uY29tLz92PTVOM0JYOVMx', 'megavideo.com')" rel="nofollow">Ver película</a></span>
+    
+    <span class="bloque-uploader">Anónimo</span>span class="bloque-doblaje"><img src="../images/esp.gif" class="bandera" /></span>
+    span class="bloque-link">Opción 8: <a href="javascript:goTo('aHR0cDovL3d3dy5tZWdhdmlkZW8uY29tLz92PTVOM0JYOVMx', 'megavideo.com')" rel="nofollow">Ver película</a></span>
+    
     '''
-    patronvideos = '<span class="bloque-doblaje">(.+?)</span>[^<]+'
-    patronvideos +='<span class="bloque-link">[^<]+<a href="javasc#" onclick="goTo\(\'([^\']+)\'\, \'([^\']+)\'\).+?</span>'
-    #patronvideos +='(?:\| <a href="javascript\:goTo\(\'([^\']+)\'\, \'([^\']+)\'\)".*?)</span>'
-    matches = re.compile(patronvideos,re.DOTALL).findall(data)
+    patronvideos = '<span class="bloque-doblaje">(.+?)</span>[^<]+'atronvideos +='<span class="bloque-link">[^<]+<a href="javasc#" onclick="goTo\(\'([^\']+)\'\, \'([^\']+)\'\).+?</span>'
+    
+    #patronvideos +='(?:\| <a href="javascript\:goTo\(\'([^\']+)\'\, \'([^\']+)\'\)".*?)</span>matches = re.compile(patronvideos,re.DOTALL).findall(data)
     scrapertools.printMatches(matches)
-    for match in matches:
+    if lenfor match in matches:
     
         # URL
         if "megavideo" in match[2]:
@@ -593,8 +592,8 @@ def listvideos(params,url,category):
             doblaje = match[0].strip()            
         base64 = decrypt21.Base64()
         try:
-            url2 = re.compile("javasconclick=\"\'([^\']+)\'\, \'([^\']+)\'\)").findall(match[3])[0]
-            scrapedurl2 = base64._extract_code(base64.decode(url2[0]))
+            url2 = re.compile("onclick=\"goTo\(\'([^\']+)\'\, \'([^\']+)\'\)").findall(match[3])[0]       scrapedurl2 = base64._extract_code(base64.decode(url2[0]))
+    
             scrapedurl = base64._extract_code(base64.decode(match[1]))
             part1 = " Parte 1 "
             part2 = " Parte 2 "
@@ -613,7 +612,7 @@ def listvideos(params,url,category):
         # Thumbnail
         scrapedthumbnail = thumbnail
         # Argumento
-        scrapedplot = plot
+        scrapedplot = plot"
 
         # Depuracion
         if (DEBUG):
@@ -622,10 +621,9 @@ def listvideos(params,url,category):
             logger.info("scrapedthumbnail="+scrapedthumbnail)
 
         # Añade al listado de XBMC
-        xbmctools.addnewvideo( CHANNELNAME , "play" , category ,server, scrapedtitle , scrapedurl , scrapedthumbnail, scrapedplot )
+        xbmctools.addnevideo( CHANNELNAME , "play" , category ,server, scrapedtitle , scrapedurl , scrapedthumbnail, scrapedplot )
         if part2:
-            xbmctools.addnewvideo( CHANNELNAME , "play" , category ,server, scrapedtitle2 , scrapedurl2 , scrapedthumbnail, scrapedplot )
-    # Extrae las entradas (videos) directos
+      xbmctools.addnewvideo( CHANNELNAME , "play" , category ,server, scrapedtitle , scr2 , scrapedurl2 , scrapedthumbnail, scrapedplot ) Extrae las entradas (videos) directos
     patronvideos = 'flashvars="file=([^\&]+)\&amp;controlbar=over'
     matches = re.compile(patronvideos,re.DOTALL).findall(data)
     scrapertools.printMatches(matches)
@@ -734,7 +732,7 @@ def buscarelacionados(data):
     return (matches)
     
 def buscaporletraActor(params,url,category):
-    logger.info("[peliculas21.py] buscaporletra")
+    logger.info("[peliculas21.py] buscaporletra"
     '''
     data = scrapertools.cachePage(url)
     patron  = '<div class="title">Listado de Actores</div><br/>(.*?)<div class="subtitulo">Abecedario</div>'
@@ -800,7 +798,6 @@ def listaActoresMasBuscados(params,url,category):
 
     # End of directory...
     xbmcplugin.endOfDirectory( handle=int( sys.argv[ 1 ] ), succeeded=True )
-
 
 def listActoresAlfab(params,url,category):
     logger.info("[peliculas21.py] listaActoresAlfab")
